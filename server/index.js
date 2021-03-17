@@ -11,8 +11,15 @@ app.use(express.json())
 
 app.post('/api/auth/register', authCtrl.register)
 app.post('/api/auth/login', authCtrl.login)
-app.delete('/api/auth/logout', auth.logout)
-app.get('/api/auth/getUser', authCtrl.getUser)
+app.delete('/api/auth/logout', authCtrl.logout)
+app.get('/api/auth/user', authCtrl.getUser)
+
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: SESSION_SECRET,
+    cookies: { maxAge: 1000 * 60 * 60 * 24 * 365 }
+}))
 
 massive({
     connectionString: CONNECTION_STRING,
