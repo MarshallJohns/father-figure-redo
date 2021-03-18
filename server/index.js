@@ -8,18 +8,18 @@ const authCtrl = require('./controllers/authController')
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 app.use(express.json())
-
-app.post('/api/auth/register', authCtrl.register)
-app.post('/api/auth/login', authCtrl.login)
-app.delete('/api/auth/logout', authCtrl.logout)
-app.get('/api/auth/user', authCtrl.getUser)
-
 app.use(session({
     resave: false,
     saveUninitialized: true,
     secret: SESSION_SECRET,
     cookies: { maxAge: 1000 * 60 * 60 * 24 * 365 }
 }))
+
+app.post('/api/auth/register', authCtrl.register)
+app.post('/api/auth/login', authCtrl.login)
+app.delete('/api/auth/logout', authCtrl.logout)
+app.get('/api/auth/user', authCtrl.getUser)
+
 
 massive({
     connectionString: CONNECTION_STRING,
