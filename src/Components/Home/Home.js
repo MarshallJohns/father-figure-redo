@@ -21,7 +21,7 @@ export default function Home(props) {
     return (
         <div>
             <div>
-                <input type='text' placeholder='Zipcode' value={zipcode} onChange={e => setZipcode(e.target.value)} />
+                <input type='text' placeholder='Zipcode' value={zipcode} onChange={(e) => setZipcode(e.target.value)} />
                 <button onClick={() => handleWeather()}>Submit!</button>
             </div>
 

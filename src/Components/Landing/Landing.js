@@ -17,7 +17,7 @@ function Landing(props) {
             })
         } else (alert('Please fill out both fields'))
     }
-
+    console.log('refresh')
     return (
         <div>
             <div>
